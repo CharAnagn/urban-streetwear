@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Fashion</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <!--Overlay-->
+        <div class="left"></div>
+        <div class="right"></div>
+
+        <!--Nav -->
+        <nav class="nav">
+            <ul>
+              <li class="menu">
+                  <i class="fa fa-bars"></i>
+                </li>
+              <li class="logo">Urban</li> 
+              <li class="collection">collection 2022</li>
+              <li class="explore">explore</li>
+              <li class="search">search</li>
+              <li class="cart">
+                <i class="fa fa-cart-shopping"></i>
+              </li>
+              </ul>
+              </nav>
+
+
+                
+            <div class="content">
+
+                    <!--Images-->       
+                <div class="img-wrapper">
+                  <img src="./images/urban1.png" alt="" class="image-first">
+                  <img src="./images/urban2.png" class="image-second">
+                  <img src="./images/urban3.png" alt="" class="image-third">
+                </div>
+
+                <!--Social-->
+                <div class="social">
+                    <ul>
+                        <li>facebook</li>
+                        <li>instagram</li>
+                        <li>pinterest</li>
+                        <li><i class="fa fa-share-alt"></i></li>
+                    </ul>
+                </div>
+
+                    <!--Text-->
+              <div class="text">
+                <h1>Streetwear</h1>
+                <p>mens colletion</p>
+              </div>
+
+              <!--bottomNav-->
+
+              <div class="bottomnav">
+                <div class="item">
+                    <div class="line"></div>
+                    <div class="nav-item">Jackets</div>
+                </div>
+                <div class="item">
+                    <div class="line"></div>
+                    <div class="nav-item">T-shirts</div>
+                </div>
+                <div class="item">
+                    <div class="line"></div>
+                    <div class="nav-item">Trousers</div>
+                </div>
+              </div>
+        
+            </div>     
+    </div>
+    
+    <script>
+        const tl = gsap.timeline();
+
+        tl
+       .to(".left", {delay:0.8, width:"50%",ease:"power2.inOut",duration:2})
+        .to(".right", {delay:0.6, width:"50%", ease:"back", duration:1.5}, "<")
+        .from(".nav", {
+            delay:0.8,
+            opacity:0,
+            ease:"back"
+        },"<0.2")
+        .from(".text h1", {
+           delay:0.6,
+           x:"100%",
+           opacity:0,
+           ease:"back",
+           duration:0.7
+       },"<")
+       .from(".image-first", {
+           width: 0,
+           opacity:0,
+           duration:1,
+        })
+        .from(".social", {
+            y:-100,
+            opacity:0
+        })
+       .from(".text p",{
+           delay:0.2,
+           y:-100,
+           opacity:0,
+           ease:"back"
+       },"<")
+       .from(".bottomnav .item",{
+           x:100,
+           ease:"back",
+           opacity:0,
+           stagger:{
+               from:"end",
+               amount:0.5
+           }
+       }, "<")
+
+
+      
+
+        gsap.timeline({repeat: -1,duration:4, ease:"back"})
+       .to(".image-first", {opacity:0,delay:6})
+        .to(".image-second",{opacity:1,}, "<0.7")
+        .to(".image-second", {opacity:0}, "+=6" )
+        .to(".image-third",{opacity:1,}, "<0.7",)
+        .to(".image-third",{opacity:0}, "+=6")
+        .to(".image-first", {opacity:1}, "<0.7")
+
+        
+        
+        
+
+
+
+
+       //bottomNav Animation on hover
+       const item = document.querySelectorAll(".item");
+
+       item.forEach((item, index) =>{
+           const newTimeline = gsap
+           .timeline({paused: true, yoyo: true})
+           .to(item.querySelector(".nav-item"), {x:10,scale:1.2, transformOrigin:"left center"})
+           .to(item.querySelector(".line"), {width:"50" }, 0)
+
+           item.addEventListener("mouseenter", ()=> newTimeline.play())
+           item.addEventListener("mouseleave", ()=> newTimeline.reverse())
+       })
+
+       
+    </script>
+</body>
+</html>
