@@ -41,7 +41,7 @@
                 <div class="img-wrapper">
                   <img src="./images/urban1.png" alt="" class="image-first">
                   <img src="./images/urban2.png" class="image-second">
-                  <img src="./images/urban3.png" alt="" class="image-third">
+                  
                 </div>
 
                 <!--Social-->
@@ -57,7 +57,7 @@
                     <!--Text-->
               <div class="text">
                 <h1>Streetwear</h1>
-                <p>mens colletion</p>
+                <p>men's collection</p>
               </div>
 
               <!--bottomNav-->
@@ -101,7 +101,7 @@
        .from(".image-first", {
            width: 0,
            opacity:0,
-           duration:1,
+           duration:0.7,
         })
         .from(".social", {
             y:-100,
@@ -126,13 +126,11 @@
 
       
 
-        gsap.timeline({repeat: -1,duration:4, ease:"back"})
+        gsap.timeline({repeat: -1,duration:4, ease:"back",yoyo:true})
        .to(".image-first", {opacity:0,delay:6})
         .to(".image-second",{opacity:1,}, "<0.7")
         .to(".image-second", {opacity:0}, "+=6" )
-        .to(".image-third",{opacity:1,}, "<0.7",)
-        .to(".image-third",{opacity:0}, "+=6")
-        .to(".image-first", {opacity:1}, "<0.7")
+        
 
         
         
@@ -147,7 +145,7 @@
        item.forEach((item, index) =>{
            const newTimeline = gsap
            .timeline({paused: true, yoyo: true})
-           .to(item.querySelector(".nav-item"), {x:10,scale:1.2, transformOrigin:"left center"})
+           .to(item.querySelector(".nav-item"), {scale:1.2, transformOrigin:"left center"})
            .to(item.querySelector(".line"), {width:"50" }, 0)
 
            item.addEventListener("mouseenter", ()=> newTimeline.play())

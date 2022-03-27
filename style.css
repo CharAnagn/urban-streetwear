@@ -111,15 +111,7 @@ body {
     opacity:0;
   }
 
-  .img-wrapper .image-third{
-    position: relative;
-    height:550px;
-    width:600px;
-    z-index:96;
-    border-radius:30px;
-    opacity:0;
-    right:600px;
-}
+  
 
 /* Social */
 .social{
